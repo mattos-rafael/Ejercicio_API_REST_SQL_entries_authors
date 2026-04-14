@@ -19,6 +19,7 @@ const getEntriesByEmail = async (email) => {
 
 const getAllEntries = async () => {
     let client, result;
+    
     try {
         client = await pool.connect(); // Espera a abrir conexion
         const data = await client.query(queries.getAllEntries)
@@ -27,6 +28,8 @@ const getAllEntries = async () => {
         console.log(err);
         throw err;
     } finally {
+
+        console.log(client);
         client.release();
     }
     return result
