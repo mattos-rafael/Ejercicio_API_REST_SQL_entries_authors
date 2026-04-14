@@ -75,9 +75,7 @@ const deleteEntry = async (req, res) => {
   
   try {
     const response = await entry.deleteEntry(title)
-    res.status(200).json({items_deleted: response,
-                          deleted_item: title
-                        })
+    res.status(200).json({message: `Se ha borrado la entry '${title}'`})
 
   }catch(err) {
     console.log(err);
@@ -110,10 +108,7 @@ const updateEntry = async (req, res) => {
 
     try {
       const response = await entry.updateEntry(editedEntry);
-      res.status(201).json({
-          "items_created": response,
-          data: editedEntry
-      });
+      res.status(201).json({message: `Se ha modificado la entry '${title}' `});
     } catch (err) {
       console.log(err.message)
       res.status(400).json({
